@@ -2,21 +2,27 @@ const express= require('express');
 const router=express.Router();
 
 const userController = require('../Controllers/userController');
-
+const User = require('../Models/userModel');
+/********************************DONE****************************************/
 //get pour recuperer des donnes **AFFICHAGE DES UTILISATEURS**
-router.get('/listUser',userController.listUser); //ca marche
+router.get('/afficher',userController.listUser); //ca marche
 
 //get pour recuperer des donnes **AFFICHAGE D'UN UTILISATEUR PAR SON ID**
-router.get('/getbyid/:id',userController.getbyid) // ca marche
-
+router.get('/afficher/:id',userController.getbyid) // ca marche
+//** AFFICHER un utilisateur appartier de son nom  */
+router.get('/afficherN',userController.afficherUser)
 // **SUPPRESSION D'UN UTILISATEUR PAR SON ID**
-router.delete('/delete/:id',userController.suprimerUser)
-
+router.delete('/supprimer/:id',userController.suprimerUser) //ca marche
+//**SUPPRESSION DE TOUS LES UTILISATEURS */
+router.delete('/supprimer',userController.Supprimer)
 // **MISE A JOUR D'UN UTILISATEUR PAR SON ID**
-router.put('/update/:id',userController.UpdateUser)
+router.put('/modifier/:id',userController.UpdateUser)// ca marche
 
 //post pour envoyer des donnes //**AJOUT D'UN UTILISATEUR **/
-router.post('/adduser',userController.addUser)
-    
+router.post('/ajouter',userController.addUser)// ca marche 
+// fil update fil postaman , zone body ,tekteb ela theb tebedlou 
+// w fil lien /adduser wila /update/id
+router.post('/authentification',userController.Authentification)
+
 
 module.exports=router;

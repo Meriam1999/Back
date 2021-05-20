@@ -1,20 +1,22 @@
 
-const admin = require('../Models/adminModel')
+const admin = require('../Models/AdminModel')
+
 module.exports={
 
     //** AJOUT D'UN ADMIN **/
     ajouterAdmin: function(req,res){
         const admin1 = new admin(
-            {   
-                etat_admin:req.body.etat_admin,
-                username:req.body.username,
-                password:req.body.password,
-                name:req.body.name,
-                surname:req.body.surname,
-                profile_picture:req.body.profile_picture,
-                sexe:req.body.sexe,
-                email:req.body.email,
-                phone_number: req.body.phone_number
+
+            {  
+                dateInscription:req.body.dateInscription,   
+                Nom:req.body.Nom,
+                Prenom:req.body.Prenom,
+                Nom_utilisateur:req.body.Nom_utilisateur,
+                Mot_de_passe:req.body.Mot_de_passe,
+                Photo_profile:req.body.Photo_profile,
+                Genre:req.body.Genre,
+                Email:req.body.Email,
+                Numero_telephone:req.body.Numero_telephone
             }
         )
         admin1.save(function(err){
@@ -27,7 +29,8 @@ module.exports={
             }
         })
     },
-
+    
+ 
     //** AFFICHAGE D'UN ADMIN **/
     afficherAdmin: (req,res) =>{
         admin.find({},(err,list)=>{
@@ -52,6 +55,19 @@ module.exports={
       })  
     },
 
+    //** SUPPRESSION de toute la liste */
+    Supprimer: (req,res) =>{
+        admin.remove({},(err,list)=>{
+            if(err){
+                res.json({state : 'no', msg :'error'+err})
+            }else{
+                res.json(list)
+            }
+        }
+        )
+        
+    },
+
     //** MISE A JOUR D'UN ADMIN **/
     UpdateAdmin : function(req,res){
         admin.updateOne(
@@ -61,15 +77,14 @@ module.exports={
                 $set : req.body
             },
             {   
-                etat_admin:res.body.etat_admin,
-                username:req.body.username,
-                password:req.body.password,
-                name:req.body.name,
-                surname:req.body.surname,
-                profile_picture:req.body.profile_picture,
-                sexe:req.body.sexe,
-                email:req.body.email,
-                phone_number: req.body.phone_number
+                Nom:req.body.Nom,
+                Prenom:req.body.Prenom,
+                Nom_utilisateur:req.body.Nom_utilisateur,
+                Mot_de_passe:req.body.Mot_de_passe,
+                Photo_profile:req.body.Photo_profile,
+                Genre:req.body.Genre,
+                Email:req.body.Email,
+                Numero_telephone:req.body.Numero_telephone
             },
             function(err,list){
                 if (err){

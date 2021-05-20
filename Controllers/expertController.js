@@ -1,36 +1,10 @@
 
-const admin = require('../Models/expertModel')
+const expert = require('../Models/expert')
 module.exports={
 
-    //** AJOUT D'UN EXPERT **/
-    ajouterExpert: function(req,res){
-        const expert1 = new admin(
-            {   
-                dateInscription :req.body.dateInscription,
-                username:req.body.username,
-                password:req.body.password,
-                name:req.body.name,
-                surname:req.body.surname,
-                profile_picture:req.body.profile_picture,
-                sexe:req.body.sexe,
-                email:req.body.email,
-                phone_number: req.body.phone_number
-            }
-        )
-        expert1.save(function(err){
-            if(err){
-                res.json({state : 'erreuuur', msg :'error'+err})
-                console.log('erreur' +err);
-            }
-            else{
-                res.json({state:'ok',msg:'admin ajouter'})
-            }
-        })
-    },
-
     //** AFFICHAGE D'UN EXPERT **/
-    afficherAdmin: (req,res) =>{
-        expert1.find({},(err,list)=>{
+    afficherExpert: (req,res) =>{
+        expert.find({},(err,list)=>{
             if(err){
                 res.json({state : 'no', msg :'error'+err})
             }else{
@@ -40,10 +14,38 @@ module.exports={
         )
         
     },
+    //** AJOUT D'UN EXPERT **/
+    ajouterExpert: function(req,res){
+        const expert1 = new expert (
+
+            {   
+                dateInscription :req.body.dateInscription,
+                Nom:req.body.Nom,
+                Prenom:req.body.Prenom,
+                Nom_utilisateur:req.body.Nom_utilisateur,
+                role:req.body.role,
+                Mot_de_passe:req.body.Mot_de_passe,
+                Photo_profile:req.body.Photo_profile,
+                Email:req.body.Email,
+                job:req.body.job,
+                Numero_telephone:req.bodY.Numero_telephone
+            }
+        )
+        expert1.save(function(err){
+            if(err){
+                res.json({state : 'erreuuur', msg :'error'+err})
+                console.log('erreur' +err);
+            }
+            else{
+                res.json({state:'ok',msg:'expert ajouter'})
+            }
+        })
+    },
+
    
     //** SUPPRESSION D'UN EXPERT **/
-    supprimerAdmin: (req,res)=>{
-        expert1.findOneAndRemove({_id:req.params.id},(err,list)=>{
+    supprimerExpert: (req,res)=>{
+        expert.findOneAndRemove({_id:req.params.id},(err,list)=>{
           if(err){
               res.json({state : 'no', msg :'error'+err})
           }else{
@@ -51,10 +53,22 @@ module.exports={
           }
       })  
     },
+    //**SUPPRESSION DE TOUTE LA LISTE DES EXPERTS */
+    Supprimer: (req,res) =>{
+        expert.remove({},(err,list)=>{
+            if(err){
+                res.json({state : 'no', msg :'error'+err})
+            }else{
+                res.json(list)
+            }
+        }
+        )
+        
+    },
 
     //** MISE A JOUR D'UN EXPERT**/
-    UpdateAdmin : function(req,res){
-        expert1.updateOne(
+    UpdateExpert: function(req,res){
+        expert.updateOne(
             {
                 _id : req.params.id
             },{
@@ -62,14 +76,15 @@ module.exports={
             },
             {   
                 dateInscription :req.body.dateInscription,
-                username:req.body.username,
-                password:req.body.password,
-                name:req.body.name,
-                surname:req.body.surname,
-                profile_picture:req.body.profile_picture,
-                sexe:req.body.sexe,
-                email:req.body.email,
-                phone_number: req.body.phone_number
+                Nom:req.body.Nom,
+                Prenom:req.body.Prenom,
+                Nom_utilisateur:req.body.Nom_utilisateur,
+                Mot_de_passe:req.body.Mot_de_passe,
+                Photo_profile:req.body.Photo_profile,
+                Genre:req.body.Genre,
+                Email:req.body.Email,
+                job:req.body.job,
+                Numero_telephone:req.bodY.Numero_telephone
             },
             function(err,list){
                 if (err){
