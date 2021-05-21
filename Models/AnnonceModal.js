@@ -1,12 +1,27 @@
-const mongoose =require('mongoose');
-const annonceSchema = new mongoose.Schema({
 
+
+const mongoose = require('mongoose');
+const Schema =mongoose.Schema
+const Image = new Schema({
+
+
+
+    CodeBase64: {
+        type:String,
+        required:true,
+        trim:true
+    },
+})
+
+
+const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
+{
         
     Titre:{
         type:String,
         required:true,
         trim:true
-    },
+         },
 
     Description :{
         type:String,
@@ -76,9 +91,19 @@ const annonceSchema = new mongoose.Schema({
         required:true
     }],
 
+    Image: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Image",
+    }],
   
-})
+
+}
+))
     
 
+module.exports=annonceSchema;
 
-module.exports=mongoose.model('Annonce',annonceSchema);
+
+
+
+
