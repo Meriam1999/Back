@@ -9,7 +9,7 @@ const Image = new Schema({
     CodeBase64: {
         type:String,
         required:true,
-        trim:true
+        trim:true///////////////*
     },
 })
 
