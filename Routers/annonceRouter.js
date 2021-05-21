@@ -13,5 +13,6 @@ router.delete('/supprimer/:id',annonceController.supprimerAnnonce);// ca marche
 
 //* MISE A JOUR ANNONCE */
 router.put('/modifier/:id',annonceController.UpdateAnnonce); // ca marche 
+
 router.get('/afficherTitre',annonceController.afficherAnnonceTiltle); // ca marche 
 module.exports = router;

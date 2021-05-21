@@ -17,4 +17,4 @@ router.delete('/supprimer',adminController.Supprimer); // ca marche
 //* MISE A JOUR D'UN ADMIN */
 router.put('/modifier/:id',adminController.UpdateAdmin); // ca marche 
 
-module.exports= router;
+module.exports=router; 
