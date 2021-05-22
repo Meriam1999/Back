@@ -1,12 +1,27 @@
 
-const User = require('../Models/userModel');
+const User  = require('../Models/userModel');
+const validate = require('../Models/userModel')
 const bcrypt = require('bcrypt');
 
 module.exports = {
 
+   
+    
+
     //**AJOUT D'UN UTILISATEUR **/
-    addUser: (req,res)=>{
-        const users = new User({
+    addUser:  async (req,res)=>{
+        // First Validate The Request
+        const { error } = validate(req.body);
+        if (error) {
+        return res.status(400).send(error.details[0].message);
+         }
+          // Check if this user already exisits
+        let users = await User.findOne({Email:req.body.Email});
+     if (users) {
+        return res.status(400).send('That user already exisits!');
+    }
+     else {
+            const users =  new User({
             Nom:req.body.Nom,
             Prenom:req.body.Prenom,
             Nom_utilisateur:req.body.Nom_utilisateur,
@@ -16,20 +31,21 @@ module.exports = {
             Email:req.body.Email,
             Numero_telephone:req.body.Numero_telephone
            
-        })
-        
+        });
+        const a1 = users.save();
         try {
            
-            const a1 = users.save();
-            res.json(a1);
+        
+            res.json("ajout avec succee");
             console.log(' ajout avec succes ');
             
-        }catch(err){ 
+            }catch(err){ 
             console.log(' il ya une erroooor !! ', err );
+            }
+            console.log("user ajouté")
+         
         }
-        console.log("user ajouté")
     },
-
     //** AFFICHAGE LA LISTE DES UTILISATEURS**/
     listUser: (req,res) =>{
         User.find({},(err,list)=>{
@@ -139,5 +155,6 @@ module.exports = {
         
         } 
 
-       
+
+        
 }

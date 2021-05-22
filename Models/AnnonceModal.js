@@ -9,7 +9,8 @@ const Image = new Schema({
     CodeBase64: {
         type:String,
         required:true,
-        trim:true///////////slkfslmkdlmsq////*
+        trim:true
+        ///////////slkfslmkdlmsq////*
     },
 })
 
@@ -90,6 +91,8 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         enum: ['Offre Volontaire/Prix Symbolique', 'Demande'],
         required:true
     }],
+    
+    Image:[Image],
 
     Image: [{
         type: mongoose.Schema.Types.ObjectId,

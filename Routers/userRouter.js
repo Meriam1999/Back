@@ -19,7 +19,8 @@ router.delete('/supprimer',userController.Supprimer)
 router.put('/modifier/:id',userController.UpdateUser)// ca marche
 
 //post pour envoyer des donnes //**AJOUT D'UN UTILISATEUR **/
-router.post('/ajouter',userController.addUser)// ca marche 
+router.post('/ajouter',userController.addUser)
+// ca marche 
 // fil update fil postaman , zone body ,tekteb ela theb tebedlou 
 // w fil lien /adduser wila /update/id
 router.post('/authentification',userController.Authentification)

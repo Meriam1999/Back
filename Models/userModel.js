@@ -16,7 +16,10 @@ const userSchema = new mongoose.Schema({
     Nom_utilisateur:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        minlength: 5,
+        maxlength: 50,
+        unique:true
     },
 
    
@@ -24,7 +27,9 @@ const userSchema = new mongoose.Schema({
     Mot_de_passe:{   /* controle*/ 
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        minlength: 5,
+        maxlength: 50
     },
     
     Photo_profile:{
@@ -44,7 +49,9 @@ const userSchema = new mongoose.Schema({
     Email:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        minlength: 5 , 
+        maxlength:255
     },
     Numero_telephone:{
         type:String,
@@ -53,6 +60,17 @@ const userSchema = new mongoose.Schema({
     },
     
     })
+    function validateUser(User) {
+        const schema = {
+
+            Nom_utilisateur: Joi.string().unique().min(5).max(50).required(),
+            Email: Joi.string().min(5).max(255).required().email(),
+            Mot_de_passe: Joi.string().min(5).max(255).required()
+        };
+        return Joi.validate(User, schema);
+    }
+
+    exports.validate = validateUser;
     
   /*adresse*/ 
 
