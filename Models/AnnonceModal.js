@@ -2,6 +2,19 @@
 
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema
+const TagsModel = new Schema({
+
+
+
+    Contenu: {
+        
+        type:String,
+        required:true,
+        trim:true
+        ///////////slkfslmkdlmsq////*
+    },
+   
+})
 const Image = new Schema({
 
 
@@ -12,6 +25,7 @@ const Image = new Schema({
         trim:true
         ///////////slkfslmkdlmsq////*
     },
+   
 })
 
 
@@ -42,6 +56,7 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         required:true , 
         trim :true 
     },
+    
 
    
 
@@ -68,7 +83,7 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         trim:true
     },
 
-    Annonce_picture:{
+    Photo_annonce:{
         type:String,
         required:false,
         trim:true
@@ -80,7 +95,7 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     },
 // lezem naamlou controle wa9te yabaath lordonnance llexpert wyvalideha lexpert yet3te el num tel . 
 //el phone number yothher  w chat yother kif lexpert a validé lordonnace (ken fil medicament) !!!
-    Phone_Number:{
+    Numero_telephone:{
         type:Number,
         required:true,
         trim:true
@@ -94,9 +109,21 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     
     Image:[Image],
 
-    Image: [{
+    Image: [
+        {
+        CodeBase64: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Image",
+         }
+    }],
+    Tags:[TagsModel],
+
+    TagsModel: [
+        { 
+            Contenu: {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref:"Tags" ,
+        }
     }],
   
 

@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema({
         maxlength: 50,
         unique:true
     },
+   
+
+    
+        dateInscription : { 
+        type : Date,
+        default : Date.now },
+    
+    
 
    
     // cryptage

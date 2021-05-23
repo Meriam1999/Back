@@ -2,16 +2,16 @@ const express= require('express');
 const router=express.Router();
 const NotificationController = require('../Controllers/notificationController');
 
-//* AJOUTER EXPERT*/
+//* AJOUTER NOTIFICATION*/
 router.post('/add',NotificationController.ajouterNotification);// ca marche 
 
-//* AFFICHER LES ADMINS*/
+//* AFFICHER LES NOTIFICATIONS*/
 router.get('/afficher',NotificationController.afficherNotification); //ca marche
 
-//* SUPPRESSION D'UN EXPERT */
+//* SUPPRESSION UNE NOTIFICATION*/
 router.delete('/delete/:id',NotificationController.supprimerNotification); // ca marche 
 
-//* MISE A JOUR D'UN EXPERT */
+//* MISE A JOUR D'UNE NOTIFICATION */
 router.put('/update/:id',NotificationController.UpdateNotification);// ca marche 
 
 module.exports= router;
