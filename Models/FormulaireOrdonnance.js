@@ -3,10 +3,12 @@
 // idannonce , id abonné 
 
 const mongoose =require('mongoose');
-const FormulaireOrdonnance = new mongoose.Schema({
 
+const FormulaireOrdonnance = mongoose.model('FormulaireOrdonnance',new mongoose.Schema(
+
+{
    
-    expediteur: {
+    expediteur : {
         type:String,
         required:true,
         trim:true
@@ -26,5 +28,6 @@ const FormulaireOrdonnance = new mongoose.Schema({
 
    
 
-})
-module.exports= mongoose.model("FormulaireOrdonnance",FormulaireOrdonnance)
+}))
+
+module.exports=FormulaireOrdonnance

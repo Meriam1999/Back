@@ -2,15 +2,15 @@ const express= require('express');
 const router=express.Router();
 const prod = require('../Controllers/produitController');
 
-//* AJOUTER EXPERT*/
+//* AJOUTER PRODUIT*/
 router.post('/ajouter',prod.ajouterProduit);// ca marche 
 
-//* AFFICHER LES ADMINS*/
+//* AFFICHER LES PRODUITS*/
 router.get('/afficher',prod.modifierProduit); //ca marche
 
-//* SUPPRESSION D'UN EXPERT */
+//* SUPPRESSION LES PRODUITS */
 router.delete('/supprimer/:id',prod.supprimerProduit); // ca marche 
 
-//* MISE A JOUR D'UN EXPERT */
+//* MISE A JOUR D'UN PRODUIT*/
 router.put('/modifier/:id',prod.modifierProduit);// ca marche 
 module.exports= router;

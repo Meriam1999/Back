@@ -7,7 +7,7 @@ const image = new mongoose.Schema({
         required:true,
         trim:true
     },
-
+  
 
     
 })

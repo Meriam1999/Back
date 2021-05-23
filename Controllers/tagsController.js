@@ -1,15 +1,15 @@
 
-const tag =require('../Models/Image')
+const tag =require('../Models/TagsModel')
 module.exports={
 
 
         
     //** AJOUT D'UNE RECLAMATION **/
     ajouterTag: function(req,res){
-        const tag1 = new (
+        const tag1 = new tag (
     
             {  
-                contenu:req.body.contenu
+                Contenu:req.body.Contenu
             }
         )
         tag1.save(function(err){
@@ -18,7 +18,7 @@ module.exports={
                 console.log('erreur' +err);
             
             }else{
-                res.json({state:'ok',msg:'Notification ajouter'})
+                res.json({state:'ok',msg:'tags ajouter'})
             }
         }
         )
@@ -61,7 +61,7 @@ module.exports={
                 $set : req.body
             },
             {   
-                contenu:req.body.contenu
+                Contenu:req.body.Contenu
             },
             function(err,list){
                 if (err){

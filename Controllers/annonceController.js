@@ -10,14 +10,18 @@ module.exports={
             {  
                    
                 Titre:req.body.Titre,
+                Ville:req.body.Ville,
+                Prix:req.body.Prix,
                 Description:req.body.Description,
                 Gouvernorat:req.body.Gouvernorat,
                 Photo_annonce:req.body.annonce_picture,
                 Date_Annonce:req.body.Date_Annonce,
-                Phone_number:req.body.phone_number,
+                Numero_telephone:req.body.Numero_telephone,
                 Etat1Anononce:req.body.Etat1Anononce,
                 Etat2Anononce:req.body.Etat2Anononce,
-                TypeAnnonce:req.body.TypeAnnonce
+                TypeAnnonce:req.body.TypeAnnonce, 
+                Image:req.body.Image, 
+                Tags:req.body.Tags
                 
             }
         )
@@ -83,10 +87,12 @@ module.exports={
                 Gouvernorat:req.body.Gouvernorat,
                 Photo_annonce:req.body.annonce_picture,
                 Date_Annonce:req.body.Date_Annonce,
-                Phone_number:req.body.phone_number,
+                Numero_telephone:req.body.Numero_telephone,
                 Etat1Anononce:req.body.Etat1Anononce,
                 Etat2Anononce:req.body.Etat2Anononce,
-                TypeAnnonce:req.body.TypeAnnonce
+                TypeAnnonce:req.body.TypeAnnonce, 
+                Image:req.body.Image,
+                Tags:req.body.Tags
             },
             function(err,list){
                 if (err){

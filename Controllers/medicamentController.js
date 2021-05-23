@@ -7,10 +7,12 @@ module.exports={
     ajouterMedicament: function(req,res){
         const Medicament1 = new Medicament(
 
-            {  Nom:req.body.Nom,
+            {  
+               Nom:req.body.Nom,
                Dosage:req.body.Dosage , 
                DateFabrication:req.body.DateFabrication,
-               DateExpiration:req.body.DateExpiration 
+               DateExpiration:req.body.DateExpiration, 
+               FormulaireOrdonnance:req.body.FormulaireOrdonnance
             }
         )
         Medicament1.save(function(err){
@@ -19,7 +21,7 @@ module.exports={
                 console.log('erreur' +err);
             }
             else{
-                res.json({state:'ok',msg:'admin ajouter'})
+                res.json({state:'ok',msg:'medicament ajouter'})
             }
         })
     },

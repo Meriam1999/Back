@@ -59,7 +59,7 @@ app.use('/adresse',adresse);
 const image = require('./Routers/ImageRouter');
 app.use('/image',image);
 
-const tags = require('./Routers/tagsRourer');
+const tags = require('./Routers/tagsRouter');
 app.use('/tags',tags);
 
 const formO = require('./Routers/formulaireOrdonnanceRouter');

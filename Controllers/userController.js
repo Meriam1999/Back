@@ -1,5 +1,5 @@
 
-const User  = require('../Models/userModel');
+const User= require('../Models/userModel');
 const validate = require('../Models/userModel')
 const bcrypt = require('bcrypt');
 
@@ -21,6 +21,7 @@ module.exports = {
         return res.status(400).send('That user already exisits!');
     }
      else {
+         
             const users =  new User({
             Nom:req.body.Nom,
             Prenom:req.body.Prenom,
@@ -133,17 +134,17 @@ module.exports = {
             }
         )}, 
 
-        Authentification: function(req,res){
-            User.findOne({Email:req.body.Email},function(err,listUser){
+        Auth: function(req,res){
+           User.findOne({Email:req.body.Email},function(err,list){
                 if (err){
-                    console.log(err)
+                    console.log("email invalide")
                 }else{
-                    console.log(listUser)
+                    console.log(list)
                     //lezem faza te3 cryptage ici 
-                     if (req.body.password===listUser.password){
-                         res.json({state:"ok",msg:"user trouvé",listUser})
+                     if (req.body.Mot_de_passe===list.Mot_de_passe){
+                         res.json({state:"ok",msg:"user trouvé",list})
                      }else{
-                         res.json({state:"no",msg:"mot de passe invalide", listUser:null})
+                         res.json({state:"no",msg:"mot de passe invalide", list:null})
                      }
                 }
             }

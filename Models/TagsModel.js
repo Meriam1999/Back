@@ -1,5 +1,5 @@
 const mongoose =require('mongoose');
-const image = new mongoose.Schema({
+const Tags = new mongoose.Schema({
 
    
     Contenu : {
@@ -8,7 +8,6 @@ const image = new mongoose.Schema({
         trim:true
     },
 
-
     
 })
-module.exports=image;
+module.exports= mongoose.model("Tags",Tags)

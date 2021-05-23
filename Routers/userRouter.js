@@ -23,7 +23,7 @@ router.post('/ajouter',userController.addUser)
 // ca marche 
 // fil update fil postaman , zone body ,tekteb ela theb tebedlou 
 // w fil lien /adduser wila /update/id
-router.post('/authentification',userController.Authentification)
+router.post('/authentification',userController.Auth)
 
 
 module.exports=router;
