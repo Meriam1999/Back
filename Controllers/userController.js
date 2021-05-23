@@ -12,9 +12,10 @@ module.exports = {
     addUser:  async (req,res)=>{
         // First Validate The Request
         const { error } = validate(req.body);
-        if (error) {
+        if (error) 
+        {
         return res.status(400).send(error.details[0].message);
-         }
+        }
           // Check if this user already exisits
         let users = await User.findOne({Email:req.body.Email});
      if (users) {
@@ -134,28 +135,36 @@ module.exports = {
             }
         )}, 
 
-        Auth: function(req,res){
-           User.findOne({Email:req.body.Email},function(err,list){
-                if (err){
-                    console.log("email invalide")
-                }else{
-                    console.log(list)
-                    //lezem faza te3 cryptage ici 
-                     if (req.body.Mot_de_passe===list.Mot_de_passe){
-                         res.json({state:"ok",msg:"user trouvé",list})
-                     }else{
-                         res.json({state:"no",msg:"mot de passe invalide", list:null})
-                     }
+        Auth:  async (req,res) => {
+            try {
+                const user = await User.findOne({Email:req.body.Email});
+                const validPassword = user.Mot_de_passe===req.body.Mot_de_passe
+                if (!validPassword )
+                {
+                    console.log("heyyyy pasww")
+                    return res.status(400).send("mot de passe incorrecte !");
                 }
+                if (user && validPassword)
+                {   
+                    console.log("hey")
+                    return res.json("user found!")
+                }
+              
+                }
+            catch (err) 
+            {
+                console.log(err)
             }
+                    
+            return res.status(400).send("Email incorrecte");  
+
+                 
             
-            
-            
-            
-            )
-        
         } 
+            
+        }  
+        
+         
 
 
         
-}
