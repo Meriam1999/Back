@@ -1,21 +1,25 @@
 
 const Medicament =require('../Models/Medicament')
-
+const form = require("../Models/FormulaireOrdonnance")
+const a = require("../Controllers/formulaireOrdonnance")
+const FormulaireOrdonnance = require('../Models/FormulaireOrdonnance')
 module.exports={
 
     //** AJOUT D'UN ADMIN **/
     ajouterMedicament: function(req,res){
         const Medicament1 = new Medicament(
-
+                
             {  
                Nom:req.body.Nom,
                Dosage:req.body.Dosage , 
                DateFabrication:req.body.DateFabrication,
                DateExpiration:req.body.DateExpiration, 
-               FormulaireOrdonnance:req.body.FormulaireOrdonnance
+               FormulaireOrdonnance:req.body.FormulaireOrdonnance,
+               Chercher:req.body.Chercher
             }
         )
         Medicament1.save(function(err){
+            
             if(err){
                 res.json({state : 'erreuuur', msg :'error'+err})
                 console.log('erreur' +err);
@@ -23,7 +27,14 @@ module.exports={
             else{
                 res.json({state:'ok',msg:'medicament ajouter'})
             }
+            
+                
+                
+            
         })
+
+
+        
     },
     
  
@@ -83,6 +94,7 @@ module.exports={
                     res.json({state : 'no', msg :'error'+err})
                 }else{
                     res.json({state : 'ok',msg:'done'}) 
+                   
                 }
             }
         )

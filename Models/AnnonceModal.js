@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema
-const TagsModel = new Schema({
+const Tags = new Schema({
 
 
 
@@ -116,9 +116,9 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         ref: "Image",
          }
     }],
-    Tags:[TagsModel],
+    Tags:[Tags],
 
-    TagsModel: [
+    Tags: [
         { 
             Contenu: {
             type: mongoose.Schema.Types.ObjectId, 

@@ -23,12 +23,12 @@ module.exports={
                 Nom:req.body.Nom,
                 Prenom:req.body.Prenom,
                 Nom_utilisateur:req.body.Nom_utilisateur,
-                role:req.body.role,
                 Mot_de_passe:req.body.Mot_de_passe,
                 Photo_profile:req.body.Photo_profile,
+                Genre:req.body.Genre,
                 Email:req.body.Email,
                 job:req.body.job,
-                Numero_telephone:req.bodY.Numero_telephone
+                Numero_telephone:req.body.Numero_telephone
             }
         )
         expert1.save(function(err){

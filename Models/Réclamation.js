@@ -2,7 +2,7 @@ const mongoose =require('mongoose');
 const reclamation = new mongoose.Schema({
 
    
-    Titre_réclamation: {
+    Titre_reclamation: {
         type:String,
         required:true,
         trim:true
@@ -24,4 +24,5 @@ const reclamation = new mongoose.Schema({
 
     }
 })
-module.exports=reclamation;
+
+module.exports= mongoose.model("reclamation",reclamation)

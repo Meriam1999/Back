@@ -20,7 +20,7 @@ module.exports={
                 console.log('erreur' +err);
             
             }else{
-                res.json({state:'ok',msg:'Notification ajouter'})
+                res.json({state:'ok',msg:'Réclamation ajoutée'})
             }
         }
         )
