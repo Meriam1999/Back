@@ -10,7 +10,7 @@ module.exports={
             {
                 contenu:req.body.contenu,
                 expediteur:req.body.expediteur,
-                approuved:req.body.approuved
+                
             }
         )
   

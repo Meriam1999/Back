@@ -1,8 +1,9 @@
 const mongoose =require('mongoose');
 //The function trim returns the string without white spaces
 const user = require('./PrduitModel');
+const {Schema, model} = require("mongoose")
 
-const FormulaireOrdonnance = new mongoose.Schema({
+const FormulaireOrdonnance = new Schema({
 
    
     expediteur: {
@@ -47,26 +48,20 @@ const FormulaireOrdonnance = new mongoose.Schema({
         required : true 
     },
 
+    Chercher : { 
+        type: [{
+            type: String,
+            required:true , 
+            enum: ['Medicament_chercher','Medicament_vendre ']
+            }],
+            default: ['Medicament_chercher']
+    },
+
     FormulaireOrdonnance:[FormulaireOrdonnance],
 
-    FormulaireOrdonnance: [
-        { 
-            expediteur: {
-            type:mongoose.Schema.Types.ObjectId, 
-            ref :'exp'
-            },
-
-            contenu: {
-            type:mongoose.Schema.Types.ObjectId, 
-            ref:'contenu'
-            },
-
-            approuved: {
-            type:mongoose.Schema.Types.ObjectId, 
-            ref:'approuved'
-           
-         }
-
+    FormulaireOrdonnance: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "FormulaireOrdonnance",
     }],
 
 }
