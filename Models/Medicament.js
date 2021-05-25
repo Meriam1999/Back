@@ -41,11 +41,13 @@ const FormulaireOrdonnance = new Schema({
     
     DateFabrication : {
         type :Date , 
-        required : true 
+        required : true,
+        max : Date.now 
     }, 
     DateExpiration : {
         type:Date , 
-        required : true 
+        required : true ,
+        min : Date.now 
     },
 
     Chercher : { 
@@ -63,9 +65,22 @@ const FormulaireOrdonnance = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "FormulaireOrdonnance",
     }],
+    
 
 }
 )
-); 
 
-module.exports=medicSchema;
+);
+function validateDate(Medicament) {
+        const schema = {
+
+           DateFabrication: Joi.string().max(Date.now).required(),
+            DateExpiration: Joi.string().min(Date.now -1).required().email(),
+            Mot_de_passe: Joi.string().min(5).max(255).required()
+        };
+        return Joi.validate(Medicament,schema);
+    }
+
+    exports.validate = validateDate;
+    
+module.exports=medicSchema 

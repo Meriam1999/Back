@@ -1,12 +1,17 @@
 
 const Medicament =require('../Models/Medicament')
-const form = require("../Models/FormulaireOrdonnance")
-const a = require("../Controllers/formulaireOrdonnance")
+const validate=require('../Models/Medicament')
 const FormulaireOrdonnance = require('../Models/FormulaireOrdonnance')
 module.exports={
 
     //** AJOUT D'UN ADMIN **/
     ajouterMedicament: function(req,res){
+        // First Validate The Request
+        const { error } = validate(req.body);
+        if (error) 
+        {
+        return res.status(400).send(error.details[0].message);
+        }
         const Medicament1 = new Medicament(
                 
             {  
