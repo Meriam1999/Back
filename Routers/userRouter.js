@@ -14,7 +14,7 @@ router.get('/afficherN',userController.afficherUser)
 // **SUPPRESSION D'UN UTILISATEUR PAR SON ID**
 router.delete('/supprimer/:id',userController.suprimerUser) //ca marche
 //**SUPPRESSION DE TOUS LES UTILISATEURS */
-router.delete('/supprimer',userController.Supprimer)
+router.delete('/Supprimer',userController.Supprimer)
 // **MISE A JOUR D'UN UTILISATEUR PAR SON ID**
 router.put('/modifier/:id',userController.UpdateUser)// ca marche
 
