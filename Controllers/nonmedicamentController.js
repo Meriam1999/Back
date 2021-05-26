@@ -9,6 +9,7 @@ module.exports={
         const Nm1 = new Nm(
     
             {  
+                Nom:req.body.TypeNonmedicament,
                 TypeNonmedicament:req.body.TypeNonmedicament 
             }
         )
@@ -60,7 +61,7 @@ module.exports={
             },{
                 $set : req.body
             },
-            {   
+            {   Nom:req.body.TypeNonmedicament,
                 TypeNonmedicament:req.body.TypeNonmedicament 
             },
             function(err,list){

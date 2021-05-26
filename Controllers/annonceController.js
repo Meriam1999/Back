@@ -16,7 +16,6 @@ module.exports={
                 Gouvernorat:req.body.Gouvernorat,
                 Photo_annonce:req.body.annonce_picture,
                 Date_Annonce:req.body.Date_Annonce,
-                Numero_telephone:req.body.Numero_telephone,
                 Etat1Anononce:req.body.Etat1Anononce,
                 Etat2Anononce:req.body.Etat2Anononce,
                 TypeAnnonce:req.body.TypeAnnonce, 

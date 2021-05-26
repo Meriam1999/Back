@@ -72,7 +72,7 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     Etat2Anononce: {
         type: [{
         type: String,
-        enum: ['resolue', 'offerte', 'vendue','irrésolu']
+        enum: ['Resolue', 'Disponible','irrésolu']
         }],
         default: ['irrésolu']
     },
@@ -95,15 +95,10 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     },
 // lezem naamlou controle wa9te yabaath lordonnance llexpert wyvalideha lexpert yet3te el num tel . 
 //el phone number yothher  w chat yother kif lexpert a validé lordonnace (ken fil medicament) !!!
-    Numero_telephone:{
-        type:Number,
-        required:true,
-        trim:true
-                    },
 
     TypeAnnonce: [{
         type: String,                                                                       
-        enum: ['Offre Volontaire/Prix Symbolique', 'Demande'],
+        enum: ["Annonce d'offre gratuit /Vente(Prix Symbolique)", "Annonce de Recherche"],
         required:true
     }],
     
@@ -111,19 +106,19 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
 
     Image: [
         {
-        CodeBase64: {
+    
         type: mongoose.Schema.Types.ObjectId,
         ref: "Image",
-         }
+        
     }],
     Tags:[Tags],
 
     Tags: [
         { 
-            Contenu: {
+            
             type: mongoose.Schema.Types.ObjectId, 
             ref:"Tags" ,
-        }
+        
     }],
   
 
