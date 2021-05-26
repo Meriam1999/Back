@@ -21,12 +21,21 @@ const userSchema = new mongoose.Schema({
         maxlength: 50,
         unique:true
     },
+
+    etat: {
+        type: [{
+        type: String,
+        required:true , 
+        enum: ['Utilisateur', 'Expert', 'Administrateur']
+        }],
+        default: ['Utilisateur']
+    }, 
    
 
     
-        dateInscription : { 
-        type : Date,
-        default : Date.now },
+    dateInscription : { 
+    type : Date,
+    default : Date.now },
     
     
 
@@ -43,7 +52,16 @@ const userSchema = new mongoose.Schema({
     Photo_profile:{
         type:String,
         required:false,
-        trim:true
+        trim :true , 
+        Default 
+    },
+
+    etat_abonné : 
+    {
+        type: Boolean , 
+        required:false, 
+        trim:true,
+        default:true,
     },
     Genre: {
         type:[{

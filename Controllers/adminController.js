@@ -16,7 +16,8 @@ module.exports={
                 Photo_profile:req.body.Photo_profile,
                 Genre:req.body.Genre,
                 Email:req.body.Email,
-                Numero_telephone:req.body.Numero_telephone
+                Numero_telephone:req.body.Numero_telephone,
+                etat:req.body.etat
             }
         )
         admin1.save(function(err){
@@ -84,7 +85,8 @@ module.exports={
                 Photo_profile:req.body.Photo_profile,
                 Genre:req.body.Genre,
                 Email:req.body.Email,
-                Numero_telephone:req.body.Numero_telephone
+                Numero_telephone:req.body.Numero_telephone, 
+                etat:req.body.etat
             },
             function(err,list){
                 if (err){

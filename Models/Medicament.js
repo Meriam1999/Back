@@ -74,13 +74,12 @@ const FormulaireOrdonnance = new Schema({
 function validateDate(Medicament) {
         const schema = {
 
-           DateFabrication: Joi.string().max(Date.now).required(),
-            DateExpiration: Joi.string().min(Date.now -1).required().email(),
-            Mot_de_passe: Joi.string().min(5).max(255).required()
+            DateFabrication: Joi.string().max(Date.now).required(),
+            DateExpiration: Joi.string().min(Date.now).required()
         };
         return Joi.validate(Medicament,schema);
     }
 
     exports.validate = validateDate;
-    
-module.exports=medicSchema 
+
+    module.exports= medicSchema ;

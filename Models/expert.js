@@ -8,9 +8,10 @@ const expertSchema = user.discriminator('Expert',new mongoose.Schema ({
         default : Date.now
     },
 
+      
      job: {
         type :String , 
-        required:true 
+        required:false,
     }
     })
 );
