@@ -19,8 +19,16 @@ module.exports = {
         }
           // Check if this user already exisits
         let users = await User.findOne({Email:req.body.Email});
+        let a = await User.findOne({Nom_utilisateur:req.body.Nom_utilisateur})
+        
      if (users) {
-        return res.status(400).send('That user already exisits!');
+        return res.status(400).send('your email must be unique ');
+        
+    }
+    else 
+    if (a)
+    {
+        return res.status(400).send('Nom dutilisateur  must be unique ');
     }
      else {
          
