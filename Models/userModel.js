@@ -53,16 +53,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:false,
         trim :true , 
-        Default 
+        
     },
 
-    etat_abonné : 
-    {
-        type: Boolean , 
-        required:false, 
-        trim:true,
-        default:true,
-    },
+  
     Genre: {
         type:[{
             type: String,                                                                       
