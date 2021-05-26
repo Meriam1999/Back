@@ -16,6 +16,7 @@ module.exports={
         const Medicament1 = new Medicament(
                 
             {  
+                
                Nom:req.body.Nom,
                Dosage:req.body.Dosage , 
                DateFabrication:req.body.DateFabrication,

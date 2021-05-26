@@ -19,7 +19,7 @@ module.exports={
                 console.log('erreur' +err);
             
             }else{
-                res.json({state:'ok',msg:'Notification ajouter'})
+                res.json({state:'ok',msg:'NonMedicament ajouter'}) ;
             }
         }
         )
@@ -50,6 +50,18 @@ module.exports={
           }
         }
         )  
+    },
+
+    Supprimer: (req,res) =>{
+        prod.remove({},(err,list)=>{
+            if(err){
+                res.json({state : 'no', msg :'error'+err})
+            }else{
+                res.json(list)
+            }
+        }
+        )
+        
     },
 
 
