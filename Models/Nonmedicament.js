@@ -1,9 +1,6 @@
 const mongoose =require('mongoose');
 const prod= require('./PrduitModel');
-const NonMedicament= prod.discriminator('Medicament',new mongoose.Schema ({
-    
-
-        
+const NonMedicament= prod.discriminator('NonMedicament',new mongoose.Schema ({    
   
 
     TypeNonmedicament: {
@@ -22,4 +19,4 @@ const NonMedicament= prod.discriminator('Medicament',new mongoose.Schema ({
     
 
 
-module.exports=Nonmedicament;
+module.exports=NonMedicament;

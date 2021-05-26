@@ -20,7 +20,8 @@ module.exports={
                 Etat2Anononce:req.body.Etat2Anononce,
                 TypeAnnonce:req.body.TypeAnnonce, 
                 Image:req.body.Image, 
-                Tags:req.body.Tags
+                Tags:req.body.Tags,
+                Produit:req.body.Produit
                 
             }
         )

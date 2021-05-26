@@ -2,6 +2,21 @@
 
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema
+const Medicament=require('./Medicament')
+const nonMedicament=require('./Nonmedicament')
+const Produit = new Schema({
+
+
+
+    Nom: {
+        
+        type:String,
+        required:true,
+        trim:true
+        ///////////slkfslmkdlmsq////*
+    },
+   
+}) 
 const Tags = new Schema({
 
 
@@ -40,7 +55,7 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
 
     Description :{
         type:String,
-        required:true,
+        required:false,
         trim:true
     },
     
@@ -78,8 +93,8 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     },
 
     Prix:{
-        type:String,
-        required:true,
+        type:Number,
+        required:false,
         trim:true
     },
 
@@ -101,8 +116,9 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         enum: ["Annonce d'offre gratuit /Vente(Prix Symbolique)", "Annonce de Recherche"],
         required:true
     }],
+   
     
-    Image:[Image],
+    Image: [Image],
 
     Image: [
         {
@@ -120,7 +136,16 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
             ref:"Tags" ,
         
     }],
-  
+    Produit:[Produit], 
+     
+    Produit :[
+        { 
+            
+            type: mongoose.Schema.Types.ObjectId, 
+            ref:"Produit" ,
+        
+    }],
+    
 
 }
 ))

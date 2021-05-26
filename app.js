@@ -71,6 +71,15 @@ app.use('/categorie',cat);
 const medicament = require('./Routers/medicamentRouter');
 app.use('/medicament',medicament);
 
+const produit = require('./Routers/produitRouter');
+app.use('/produit',produit);
+
+
+
+const nonMedicament = require('./Routers/nonMedicamentRouter');
+app.use('/nonMedicament',nonMedicament);
+
+
 
 
 

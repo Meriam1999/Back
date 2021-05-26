@@ -1,24 +1,24 @@
 
-const image =require('../Models/ProduitModel')
+const prod =require('../Models/PrduitModel')
 module.exports={
 
 
         
     //** AJOUT D'UNE RECLAMATION **/
     ajouterProduit: function(req,res){
-        const image1 = new reclamation(
+        const prod1 = new prod(
     
             {  
                 Nom:req.body.Nom
             }
         )
-        image1.save(function(err){
+        prod1.save(function(err){
             if(err){
                 res.json({state : 'erreuuur', msg :'error'+err})
                 console.log('erreur' +err);
             
             }else{
-                res.json({state:'ok',msg:'Notification ajouter'})
+                res.json({state:'ok',msg:'produit ajouter'})
             }
         }
         )
@@ -27,7 +27,7 @@ module.exports={
 
     //** AFFICHAGE D'UNE RECLAMATION **/
     afficherProduit: (req,res) =>{
-        image.find({},(err,list)=>{
+        prod.find({},(err,list)=>{
             if(err){
                 res.json({state : 'no', msg :'error'+err})
             }else{
@@ -41,7 +41,7 @@ module.exports={
    
     //** SUPPRESSION D'UNE RECLAMATION **/
     supprimerProduit: (req,res)=>{
-        image.findOneAndRemove({_id:req.params.id},(err,list)=>{
+        prod.findOneAndRemove({_id:req.params.id},(err,list)=>{
           if(err){
               res.json({state : 'no', msg :'error'+err})
           }else{
@@ -51,10 +51,22 @@ module.exports={
         )  
     },
 
+    Supprimer: (req,res) =>{
+        prod.remove({},(err,list)=>{
+            if(err){
+                res.json({state : 'no', msg :'error'+err})
+            }else{
+                res.json(list)
+            }
+        }
+        )
+        
+    },
+
 
     //** MISE A JOUR D'UNE RECLAMATION**/
     modifierProduit: function(req,res){
-        image.updateOne(
+        prod.updateOne(
             {
                 _id : req.params.id
             },{
