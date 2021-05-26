@@ -28,7 +28,8 @@ module.exports={
                 Genre:req.body.Genre,
                 Email:req.body.Email,
                 job:req.body.job,
-                Numero_telephone:req.body.Numero_telephone
+                Numero_telephone:req.body.Numero_telephone,
+                etat:req.body.etat
             }
         )
         expert1.save(function(err){
@@ -84,7 +85,8 @@ module.exports={
                 Genre:req.body.Genre,
                 Email:req.body.Email,
                 job:req.body.job,
-                Numero_telephone:req.bodY.Numero_telephone
+                Numero_telephone:req.bodY.Numero_telephone, 
+                etat:req.body.etat
             },
             function(err,list){
                 if (err){

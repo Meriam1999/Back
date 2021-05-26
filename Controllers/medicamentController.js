@@ -12,6 +12,7 @@ module.exports={
         {
         return res.status(400).send(error.details[0].message);
         }
+       
         const Medicament1 = new Medicament(
                 
             {  
@@ -20,7 +21,7 @@ module.exports={
                DateFabrication:req.body.DateFabrication,
                DateExpiration:req.body.DateExpiration, 
                FormulaireOrdonnance:req.body.FormulaireOrdonnance,
-               Chercher:req.body.Chercher
+             
             }
         )
         Medicament1.save(function(err){

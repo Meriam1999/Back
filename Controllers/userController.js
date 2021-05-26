@@ -2,6 +2,7 @@
 const User= require('../Models/userModel');
 const validate = require('../Models/userModel')
 const bcrypt = require('bcrypt');
+const expert= require ('../Models/expert')
 
 module.exports = {
 
@@ -31,23 +32,26 @@ module.exports = {
             Photo_profile:req.body.Photo_profile,
             Genre:req.body.Genre,
             Email:req.body.Email,
-            Numero_telephone:req.body.Numero_telephone
-           
+            Numero_telephone:req.body.Numero_telephone,
+            etat_abonné :req.body.etat_abonné
+            
         });
         const a1 = users.save();
-        try {
+        try { 
            
         
             res.json("ajout avec succee");
             console.log(' ajout avec succes ');
-            
-            }catch(err){ 
+        }catch(err){ 
             console.log(' il ya une erroooor !! ', err );
             }
             console.log("user ajouté")
-         
+            this.tester(req,res) ; 
+            
         }
+       
     },
+   
     //** AFFICHAGE LA LISTE DES UTILISATEURS**/
     listUser: (req,res) =>{
         User.find({},(err,list)=>{
@@ -123,7 +127,11 @@ module.exports = {
                 Photo_profile:req.body.Photo_profile,
                 Genre:req.body.Genre,
                 Email:req.body.Email,
-                Numero_telephone:req.body.Numero_telephone
+                Numero_telephone:req.body.Numero_telephone, 
+                etat:req.body.etat, 
+                
+
+
                
             },
             function(err,list){
