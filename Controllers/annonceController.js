@@ -21,7 +21,8 @@ module.exports={
                 TypeAnnonce:req.body.TypeAnnonce, 
                 Image:req.body.Image, 
                 Tags:req.body.Tags,
-                Produit:req.body.Produit
+                Produit:req.body.Produit,
+                Catégorie:req.body.Catégorie,  
                 
             }
         )
