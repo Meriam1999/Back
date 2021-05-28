@@ -6,7 +6,9 @@ const nomedicament =require('../Controllers/nonmedicamentController');
 router.post('/ajouter',nomedicament.ajouterTypeNonmedicament); // ca marche 
 
 //* AFFICHER LES MEDICAMENTS */
-router.get('/afficher',nomedicament.afficherTypeNonmedicament);// ca marche 
+router.get('/afficherNM',nomedicament.afficherTypeNonmedicament);
+router.get('/afficher',nomedicament.afficher);
+// ca marche 
 
 //* SUPPRESSION  MEDICAMENTS */
 router.delete('/supprimer/:id',nomedicament.supprimerTypeNonmedicament);// ca marche

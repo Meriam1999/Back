@@ -39,8 +39,19 @@ module.exports={
 
 
     //** AFFICHAGE D'UNE RECLAMATION **/
+    afficher: (req,res) =>{
+        Nm.find({ },(err,list)=>{
+            if(err){
+                res.json({state : 'no', msg :'error'+err})
+            }else{
+                res.json(list)
+            }
+        }
+        )
+        
+    },
     afficherTypeNonmedicament: (req,res) =>{
-        Nm.find({},(err,list)=>{
+        Nm.find({ TypeNonmedicament:req.body.TypeNonmedicament },(err,list)=>{
             if(err){
                 res.json({state : 'no', msg :'error'+err})
             }else{
