@@ -1,6 +1,6 @@
 const mongoose =require('mongoose');
 //The function trim returns the string without white spaces
-const prod = require('./PrduitModel');
+const prod = require('./AnnonceModal');
 const {Schema, model} = require("mongoose")
 const FormulaireOrdonnance=require('./FormulaireOrdonnance')
  const medicSchema =prod.discriminator('Medicament',new mongoose.Schema ({

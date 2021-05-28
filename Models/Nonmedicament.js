@@ -1,6 +1,6 @@
 const mongoose =require('mongoose');
-const prod= require('./PrduitModel');
-const NonMedicament= prod.discriminator('NonMedicament',new mongoose.Schema ({    
+const annonce= require('./AnnonceModal');
+const NonMedicament= annonce.discriminator('NonMedicament',new mongoose.Schema ({    
   
 
     TypeNonmedicament: {

@@ -9,7 +9,19 @@ module.exports={
         const Nm1 = new Nm(
     
             {  
-                Nom:req.body.TypeNonmedicament,
+                Titre:req.body.Titre,
+                Ville:req.body.Ville,
+                Prix:req.body.Prix,
+                Description:req.body.Description,
+                Gouvernorat:req.body.Gouvernorat,
+                Photo_annonce:req.body.annonce_picture,
+                Date_Annonce:req.body.Date_Annonce,
+                Etat1Anononce:req.body.Etat1Anononce,
+                Etat2Anononce:req.body.Etat2Anononce,
+                TypeAnnonce:req.body.TypeAnnonce, 
+                Image:req.body.Image, 
+                Tags:req.body.Tags,
+                Catégorie:req.body.Catégorie, 
                 TypeNonmedicament:req.body.TypeNonmedicament 
             }
         )
@@ -73,7 +85,20 @@ module.exports={
             },{
                 $set : req.body
             },
-            {   Nom:req.body.TypeNonmedicament,
+            {  Titre:req.body.Titre,
+                Ville:req.body.Ville,
+                Prix:req.body.Prix,
+                Description:req.body.Description,
+                Gouvernorat:req.body.Gouvernorat,
+                Photo_annonce:req.body.annonce_picture,
+                Date_Annonce:req.body.Date_Annonce,
+                Etat1Anononce:req.body.Etat1Anononce,
+                Etat2Anononce:req.body.Etat2Anononce,
+                TypeAnnonce:req.body.TypeAnnonce, 
+                Image:req.body.Image, 
+                Tags:req.body.Tags,
+                Produit:req.body.Produit,
+                Catégorie:req.body.Catégorie, 
                 TypeNonmedicament:req.body.TypeNonmedicament 
             },
             function(err,list){

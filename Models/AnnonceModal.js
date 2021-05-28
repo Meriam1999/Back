@@ -2,8 +2,8 @@
 
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema
-const Medicament=require('./Medicament')
-const nonMedicament=require('./Nonmedicament')
+
+
 const Produit = new Schema({
 
 
@@ -44,8 +44,8 @@ const Image = new Schema({
 })
 
 
-const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
-{
+const annonceSchema =new mongoose.Schema({
+
         
     Titre:{
         type:String,
@@ -72,7 +72,13 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
         trim :true 
     },
     
+    Catégorie: {
+        type: [{
+        type: String,
+        enum: ['Medicament','NonMedicament']
+        }],
 
+    },
    
 
 
@@ -148,10 +154,10 @@ const annonceSchema = mongoose.model('annonce',new mongoose.Schema(
     
 
 }
-))
+)
     
 
-module.exports=annonceSchema;
+module.exports=mongoose.model('annonce',annonceSchema);
 
 
 
