@@ -8,7 +8,9 @@ const User = require('../Models/userModel');
 router.get('/afficher',userController.listUser); //ca marche
 
 //get pour recuperer des donnes **AFFICHAGE D'UN UTILISATEUR PAR SON ID**
-router.get('/afficher/:id',userController.getbyid) // ca marche
+router.get('/deconnexion',userController.Logout)// ca marche
+router.get('/afficher/:id',userController.getbyid)
+
 //** AFFICHER un utilisateur appartier de son nom  */
 router.get('/afficherN',userController.afficherUser)
 // **SUPPRESSION D'UN UTILISATEUR PAR SON ID**

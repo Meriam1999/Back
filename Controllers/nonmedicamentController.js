@@ -65,7 +65,7 @@ module.exports={
    
     //** SUPPRESSION D'UNE RECLAMATION **/
     supprimerTypeNonmedicament: (req,res)=>{
-        NM.findOneAndRemove({_id:req.params.id},(err,list)=>{
+        Nm.findOneAndRemove({_id:req.params.id},(err,list)=>{
           if(err){
               res.json({state : 'no', msg :'error'+err})
           }else{
@@ -76,7 +76,7 @@ module.exports={
     },
 
     Supprimer: (req,res) =>{
-        prod.remove({},(err,list)=>{
+        Nm.remove({},(err,list)=>{
             if(err){
                 res.json({state : 'no', msg :'error'+err})
             }else{
@@ -90,7 +90,7 @@ module.exports={
 
     //** MISE A JOUR D'UNE RECLAMATION**/
     modifierTypeNonmedicament: function(req,res){
-        NM.updateOne(
+        Nm.updateOne(
             {
                 _id : req.params.id
             },{

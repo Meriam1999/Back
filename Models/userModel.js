@@ -1,5 +1,8 @@
 const mongoose =require('mongoose');
 //The function trim returns the string without white spaces
+
+
+
 const userSchema = new mongoose.Schema({
 
     Nom:{
@@ -46,7 +49,8 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true,
         minlength: 5,
-        maxlength: 50
+        maxlength: 255,
+        hideJSON: true 
     },
     
     Photo_profile:{
@@ -80,6 +84,7 @@ const userSchema = new mongoose.Schema({
     },
     
     })
+   
     function validateUser(User) {
         const schema = {
 

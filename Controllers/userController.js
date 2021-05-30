@@ -1,8 +1,9 @@
 
 const User= require('../Models/userModel');
 const validate = require('../Models/userModel')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const expert= require ('../Models/expert')
+const jwt=require('jsonwebtoken')
 
 module.exports = {
 
@@ -20,6 +21,7 @@ module.exports = {
           // Check if this user already exisits
         let users = await User.findOne({Email:req.body.Email});
         let a = await User.findOne({Nom_utilisateur:req.body.Nom_utilisateur})
+        const password = await bcrypt.hash(req.body.Mot_de_passe,7)
         
      if (users) {
         return res.status(400).send('your email must be unique ');
@@ -36,7 +38,7 @@ module.exports = {
             Nom:req.body.Nom,
             Prenom:req.body.Prenom,
             Nom_utilisateur:req.body.Nom_utilisateur,
-            Mot_de_passe:req.body.Mot_de_passe,
+            Mot_de_passe:password,
             Photo_profile:req.body.Photo_profile,
             Genre:req.body.Genre,
             Email:req.body.Email,
@@ -44,21 +46,43 @@ module.exports = {
             etat_abonné :req.body.etat_abonné
             
         });
-        const a1 = users.save();
-        try { 
-           
         
+       
+        const a1 = users.save();
+        try {
+            // sign the token 
+            const token = jwt.sign(
+                {
+                user: a1._id,
+            },'${process.env.JWT_SECRET_KEY}');
+            // send the token in a HTTP.only cookie
+            console.log(token)
+            res.cookie("token",token, {
+                httpOnly : true , 
+            })
+            .send() ; 
+           
+        }catch(err)
+        {
+            console.log("err"+err); 
+            res.status(500).send() ; 
+        }
+
+       
+
+        try { 
             res.json("ajout avec succee");
             console.log(' ajout avec succes ');
         }catch(err){ 
             console.log(' il ya une erroooor !! ', err );
             }
             console.log("user ajouté")
-            this.tester(req,res) ; 
+            
             
         }
        
     },
+   
    
     //** AFFICHAGE LA LISTE DES UTILISATEURS**/
     listUser: (req,res) =>{
@@ -154,16 +178,35 @@ module.exports = {
         Auth:  async (req,res) => {
             try {
                 const user = await User.findOne({Email:req.body.Email});
-                const validPassword = user.Mot_de_passe===req.body.Mot_de_passe
+                const password = await bcrypt.hash(req.body.Mot_de_passe,7)
+                const validPassword = await bcrypt.compare(user.Mot_de_passe,password)
                 if (!validPassword )
                 {
                     console.log("heyyyy pasww")
-                    return res.status(400).send("mot de passe incorrecte !");
+                    return res.status(401).send("mot de passe incorrecte !");
                 }
                 if (user && validPassword)
                 {   
-                    console.log("hey")
-                    return res.json("user found!")
+                    try {
+                        // sign the token 
+                        const token = jwt.sign(
+                            {
+                            User: user._id,
+                        },'${process.env.JWT_SECRET_KEY}');
+                        // send the token in a HTTP.only cookie
+                        console.log(token)
+                        res.cookie("token",token, {
+                            httpOnly : true , 
+                        })
+                        .send() ; 
+                        console.log("done")
+                       
+                    }catch(err)
+                    {
+                        console.log("err"+err); 
+                        res.status(500).send() ; 
+                    }
+            
                 }
               
                 }
@@ -171,14 +214,27 @@ module.exports = {
             {
                 console.log(err)
             }
-                    
-            return res.status(400).send("Email incorrecte");  
+             // ERROR 401 authorization required        
+            return res.status(401).send("Email incorrecte");  
 
-                 
+         //user.Mot_de_passe===req.body.Mot_de_passe        
             
-        } 
-            
-        }  
+        } ,
+
+
+
+        Logout:  async (req,res) => {
+            res.cookie("token","", {
+                httpOnly:true , 
+                expires:new Date(0)
+            }).send() ;
+        }
+    }
+
+       
+
+        
+
         
          
 
