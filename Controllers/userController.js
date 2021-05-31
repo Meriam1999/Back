@@ -179,14 +179,15 @@ module.exports = {
             try {
                 const user = await User.findOne({Email:req.body.Email});
                 const password = await bcrypt.hash(req.body.Mot_de_passe,7)
-                const validPassword = await bcrypt.compare(user.Mot_de_passe,password)
+                
+                const validPassword = bcrypt.compare(this.password,user.Mot_de_passe)
                 if (!validPassword )
                 {
                     console.log("heyyyy pasww")
                     return res.status(401).send("mot de passe incorrecte !");
                 }
                 if (user && validPassword)
-                {   
+                {  console.log("hoooooo") 
                     try {
                         // sign the token 
                         const token = jwt.sign(

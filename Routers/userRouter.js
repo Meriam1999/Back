@@ -10,7 +10,6 @@ router.get('/afficher',userController.listUser); //ca marche
 //get pour recuperer des donnes **AFFICHAGE D'UN UTILISATEUR PAR SON ID**
 router.get('/deconnexion',userController.Logout)// ca marche
 router.get('/afficher/:id',userController.getbyid)
-
 //** AFFICHER un utilisateur appartier de son nom  */
 router.get('/afficherN',userController.afficherUser)
 // **SUPPRESSION D'UN UTILISATEUR PAR SON ID**
@@ -19,7 +18,6 @@ router.delete('/supprimer/:id',userController.suprimerUser) //ca marche
 router.delete('/Supprimer',userController.Supprimer)
 // **MISE A JOUR D'UN UTILISATEUR PAR SON ID**
 router.put('/modifier/:id',userController.UpdateUser)// ca marche
-
 //post pour envoyer des donnes //**AJOUT D'UN UTILISATEUR **/
 router.post('/ajouter',userController.addUser)
 // ca marche 
