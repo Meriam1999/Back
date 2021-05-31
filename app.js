@@ -4,6 +4,7 @@ const express= require('express');
 const mongoose=require('mongoose');
 const session = require('express-session');
 const url='mongodb://localhost/mydb';
+const cookie=require('cookie-parser')
 
 const app=express();
 //on se connecte a mongoose avec cet url , =true pour forcer la connexion a ce new url si non il prend l'ancienne url de mongoose
@@ -73,6 +74,7 @@ app.use('/medicament',medicament);
 
 const produit = require('./Routers/produitRouter');
 app.use('/produit',produit);
+app.use(cookie());
 
 
 
