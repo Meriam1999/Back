@@ -4,6 +4,7 @@ const validate = require('../Models/userModel')
 const bcrypt = require('bcryptjs');
 const expert= require ('../Models/expert')
 const jwt=require('jsonwebtoken')
+const cookie=require('cookie-parser')
 
 module.exports = {
 
@@ -13,16 +14,13 @@ module.exports = {
     //**AJOUT D'UN UTILISATEUR **/
     addUser:  async (req,res)=>{
         // First Validate The Request
-        const { error } = validate(req.body);
-        if (error) 
-        {
-        return res.status(400).send(error.details[0].message);
-        }
+      
           // Check if this user already exisits
         let users = await User.findOne({Email:req.body.Email});
+       
         let a = await User.findOne({Nom_utilisateur:req.body.Nom_utilisateur})
-        const password = await bcrypt.hash(req.body.Mot_de_passe,7)
-        
+        const salt = await bcrypt.genSalt()
+        const password = await bcrypt.hash(req.body.Mot_de_passe,salt);
      if (users) {
         return res.status(400).send('your email must be unique ');
         
@@ -43,7 +41,8 @@ module.exports = {
             Genre:req.body.Genre,
             Email:req.body.Email,
             Numero_telephone:req.body.Numero_telephone,
-            etat_abonné :req.body.etat_abonné
+            etat_abonné :req.body.etat_abonné,
+            test:req.body.Mot_de_passe
             
         });
         
@@ -178,15 +177,14 @@ module.exports = {
         Auth:  async (req,res) => {
             try {
                 const user = await User.findOne({Email:req.body.Email});
-                const password = await bcrypt.hash(req.body.Mot_de_passe,7)
                 
-                const validPassword = bcrypt.compare(this.password,user.Mot_de_passe)
-                if (!validPassword )
+                  const valid = user.test===req.body.Mot_de_passe  
+               if (!valid)
                 {
                     console.log("heyyyy pasww")
                     return res.status(401).send("mot de passe incorrecte !");
                 }
-                if (user && validPassword)
+                if (user && bcrypt.compare(req.body.Mot_de_passe,user.Mot_de_passe) )
                 {  console.log("hoooooo") 
                     try {
                         // sign the token 
@@ -200,6 +198,7 @@ module.exports = {
                             httpOnly : true , 
                         })
                         .send() ; 
+                        console.log(token)
                         console.log("done")
                        
                     }catch(err)
