@@ -1,6 +1,7 @@
 const mongoose =require('mongoose');
 //The function trim returns the string without white spaces
 let mongooseHidden = require('mongoose-hidden')()
+const bcrypt = require('bcrypt')
 
 
 
@@ -89,8 +90,29 @@ const userSchema = new mongoose.Schema({
     })
    
   
-    userSchema.plugin(mongooseHidden, { hidden: { _id: true, test: true } })
     
+    userSchema.pre('save',function(next) {
+        if (!this.isModified('Mot_de_passe'))
+            return next()
+        bcrypt.hash(this.Mot_de_passe,10,(err,passwordHash)=> {
+            if (err)
+                return next(err)
+            this.Mot_de_passe=passwordHash
+            next() ; 
+        }); 
+    }) ; 
+   /* userSchema.methods.Mot_de_passe.compare= function(Mot_de_passe,cb) {
+        bcrypt.compare(Mot_de_passe,this.Mot_de_passe,(err,isMatch)=>{
+            if (err)
+                return cb(err)
+            else {
+            if (!isMatch)
+            return cb(null,isMatch); 
+            return cb(null,this)}
+        })
+    }
+    */
+    userSchema.plugin(mongooseHidden, { hidden: { _id: true, test: true } })
     
   /*adresse*/ 
 

@@ -17,7 +17,7 @@ module.exports = {
       
           // Check if this user already exisits
         let users = await User.findOne({Email:req.body.Email});
-       
+
         let a = await User.findOne({Nom_utilisateur:req.body.Nom_utilisateur})
         const salt = await bcrypt.genSalt()
         const password = await bcrypt.hash(req.body.Mot_de_passe,salt);
@@ -48,7 +48,7 @@ module.exports = {
         
        
         const a1 = users.save();
-        try {
+    /*    try {
             // sign the token 
             const token = jwt.sign(
                 {
@@ -67,7 +67,7 @@ module.exports = {
             res.status(500).send() ; 
         }
 
-       
+    */   
 
         try { 
             res.json("ajout avec succee");
