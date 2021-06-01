@@ -1,5 +1,6 @@
 const mongoose =require('mongoose');
 //The function trim returns the string without white spaces
+let mongooseHidden = require('mongoose-hidden')()
 
 
 
@@ -18,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     test : {
       type  :String, 
-      required:true, 
+      
       trim:true,
       hide:true,
       hideJSON: true 
@@ -88,7 +89,7 @@ const userSchema = new mongoose.Schema({
     })
    
   
-
+    userSchema.plugin(mongooseHidden, { hidden: { _id: true, test: true } })
     
     
   /*adresse*/ 
