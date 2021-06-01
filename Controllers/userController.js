@@ -47,8 +47,8 @@ module.exports = {
         });
         
        
-        const a1 = users.save();
-    /*    try {
+        const a1 = await users.save();
+        try {
             // sign the token 
             const token = jwt.sign(
                 {
@@ -60,6 +60,7 @@ module.exports = {
                 httpOnly : true , 
             })
             .send() ; 
+            
            
         }catch(err)
         {
@@ -67,7 +68,7 @@ module.exports = {
             res.status(500).send() ; 
         }
 
-    */   
+      
 
         try { 
             res.json("ajout avec succee");
@@ -178,19 +179,17 @@ module.exports = {
             try {
                 const user = await User.findOne({Email:req.body.Email});
                 
-                  const valid = user.test===req.body.Mot_de_passe  
+                  const valid = user.test===req.body.Mot_de_passe
                if (!valid)
                 {
                     console.log("heyyyy pasww")
-                    return res.status(401).send("mot de passe incorrecte !");
+                    return res.status(401).json({errorMessage:"mot de passe incorrecte" });
                 }
-                if (user && bcrypt.compare(req.body.Mot_de_passe,user.Mot_de_passe) )
-                {  console.log("hoooooo") 
-                    try {
-                        // sign the token 
+                if (user && valid )
+                {       console.log("hoooooo") 
                         const token = jwt.sign(
                             {
-                            User: user._id,
+                            user: user._id,
                         },'${process.env.JWT_SECRET_KEY}');
                         // send the token in a HTTP.only cookie
                         console.log(token)
@@ -199,27 +198,23 @@ module.exports = {
                         })
                         .send() ; 
                         console.log(token)
-                        console.log("done")
-                       
-                    }catch(err)
-                    {
-                        console.log("err"+err); 
-                        res.status(500).send() ; 
-                    }
-            
-                }
-              
-                }
-            catch (err) 
-            {
-                console.log(err)
-            }
-             // ERROR 401 authorization required        
-            return res.status(401).send("Email incorrecte");  
+                        console.log("done")     
 
+                } 
+                
+               
+                
+                 } catch (err) 
+                    {
+                         console.log(err)
+                    }
+             // ERROR 401 authorization required        
+           
+             return res.status(401).json({errorMessage:"Email incorrecte" });
          //user.Mot_de_passe===req.body.Mot_de_passe        
             
-        } ,
+                },
+            
 
 
 

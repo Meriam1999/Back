@@ -91,7 +91,7 @@ const userSchema = new mongoose.Schema({
    
   
     
-    userSchema.pre('save',function(next) {
+  /*  userSchema.pre('save',function(next) {
         if (!this.isModified('Mot_de_passe'))
             return next()
         bcrypt.hash(this.Mot_de_passe,10,(err,passwordHash)=> {
@@ -101,6 +101,7 @@ const userSchema = new mongoose.Schema({
             next() ; 
         }); 
     }) ; 
+    */
    /* userSchema.methods.Mot_de_passe.compare= function(Mot_de_passe,cb) {
         bcrypt.compare(Mot_de_passe,this.Mot_de_passe,(err,isMatch)=>{
             if (err)
