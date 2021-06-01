@@ -53,7 +53,7 @@ module.exports = {
             const token = jwt.sign(
                 {
                 user: a1._id,
-            },'${process.env.JWT_SECRET_KEY}');
+            },'${process.env.JWT_SECRET}');
             // send the token in a HTTP.only cookie
             console.log(token)
             res.cookie("token",token, {
@@ -180,17 +180,20 @@ module.exports = {
                 const user = await User.findOne({Email:req.body.Email});
                 
                   const valid = user.test===req.body.Mot_de_passe
+                  let fetchedUser=user
                if (!valid)
                 {
                     console.log("heyyyy pasww")
                     return res.status(401).json({errorMessage:"mot de passe incorrecte" });
                 }
                 if (user && valid )
-                {       console.log("hoooooo") 
+
+                {   //STEP ONE !!    
+                   /* console.log("hoooooo") 
                         const token = jwt.sign(
                             {
-                            user: user._id,
-                        },'${process.env.JWT_SECRET_KEY}');
+                            User: user._id,
+                        },'${process.env.JWT_SECRET}');
                         // send the token in a HTTP.only cookie
                         console.log(token)
                         res.cookie("token",token, {
@@ -198,19 +201,30 @@ module.exports = {
                         })
                         .send() ; 
                         console.log(token)
-                        console.log("done")     
-
-                } 
+                        console.log("done")    */
+                        // step  2
+                        const token = jwt.sign(
+                            { Email: fetchedUser.Email, userId: fetchedUser._id },
+                            '${process.env.JWT_SECRET}'
+                         
+                          );
+                          res.status(200).json({
+                            token: token,
+                            expiresIn: 3600,
+                            userId: fetchedUser._id
+                          });
                 
-               
-                
-                 } catch (err) 
-                    {
-                         console.log(err)
                     }
+                
+                
              // ERROR 401 authorization required        
            
-             return res.status(401).json({errorMessage:"Email incorrecte" });
+            
+            } catch (err) 
+            {
+                 console.log(err)
+            }
+            return res.status(401).json({errorMessage:"Email incorrecte" });
          //user.Mot_de_passe===req.body.Mot_de_passe        
             
                 },
