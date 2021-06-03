@@ -6,6 +6,7 @@ const expert= require ('../Models/expert')
 const jwt=require('jsonwebtoken')
 const cookie=require('cookie-parser')
 
+
 module.exports = {
 
    
@@ -47,7 +48,8 @@ module.exports = {
         });
         
        
-        const a1 = await users.save();
+        const a1 = await users.save()
+        
         try {
             // sign the token 
             const token = jwt.sign(
@@ -78,9 +80,9 @@ module.exports = {
             }
             console.log("user ajouté")
             
-            
+           
         }
-       
+     
     },
    
    
@@ -203,7 +205,7 @@ module.exports = {
                         console.log(token)
                         console.log("done")    */
                         // step  2
-                        const token = jwt.sign(
+                       const token = jwt.sign(
                             { Email: fetchedUser.Email, userId: fetchedUser._id },
                             '${process.env.JWT_SECRET}'
                          
@@ -214,6 +216,9 @@ module.exports = {
                             userId: fetchedUser._id
                           });
                 
+                        
+                          
+            
                     }
                 
                 

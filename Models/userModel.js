@@ -113,7 +113,7 @@ const userSchema = new mongoose.Schema({
         })
     }
     */
-    userSchema.plugin(mongooseHidden, { hidden: { _id: true, test: true } })
+    userSchema.plugin(mongooseHidden, { hidden: { _id: false , test: true } })
     
   /*adresse*/ 
 
