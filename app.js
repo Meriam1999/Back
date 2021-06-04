@@ -2,6 +2,7 @@
 const http=require ('http');
 const express= require('express');
 const mongoose=require('mongoose');
+const cors = require('cors');
 const session = require('express-session');
 const url='mongodb://localhost/mydb';
 const cookie=require('cookie-parser')
@@ -11,7 +12,7 @@ const app=express();
 //conn instantiation de la connexion a la base de donnee 
 //.on est comme eventlistener , s'il ya envoi de donnee on execute la fct function()..
 
-mongoose.connect(url,{useNewUrlParser:true});
+mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const conn=mongoose.connection
 conn.on('open',function(){
     console.log('connected...');
@@ -29,6 +30,18 @@ app.use(session({
 //pour les redirections de sécurité, lorsque le serveur subit un modification
 //alors redirection automatique vers la page de login
 
+
+
+
+
+
+
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 ,
+  credentials: true, // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 
 
 app.use(express.json());
@@ -80,6 +93,9 @@ app.use(cookie());
 
 const nonMedicament = require('./Routers/nonMedicamentRouter');
 app.use('/nonMedicament',nonMedicament);
+
+
+
 
 
 
