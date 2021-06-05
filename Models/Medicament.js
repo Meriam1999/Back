@@ -37,6 +37,9 @@ const FormulaireOrdonnance=require('./FormulaireOrdonnance')
 )
 
 );
+medicSchema.DateExpiration instanceof Date ;
+medicSchema.DateExpiration instanceof Date ;
+
 function validateDate(Medicament) {
         const schema = {
 
