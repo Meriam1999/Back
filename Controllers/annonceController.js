@@ -22,7 +22,8 @@ module.exports={
                 Image:req.body.Image, 
                 Tags:req.body.Tags,
                 Produit:req.body.Produit,
-                Catégorie:req.body.Catégorie,  
+                Catégorie:req.body.Catégorie,
+                userId:req.body.userId  
                 
             }
         )
@@ -82,18 +83,21 @@ module.exports={
             },{
                 $set : req.body
             },
-            {      
-                Titre:req.body.Titre,
+            {  Titre:req.body.Titre,
+                Ville:req.body.Ville,
+                Prix:req.body.Prix,
                 Description:req.body.Description,
                 Gouvernorat:req.body.Gouvernorat,
                 Photo_annonce:req.body.annonce_picture,
                 Date_Annonce:req.body.Date_Annonce,
-                Numero_telephone:req.body.Numero_telephone,
                 Etat1Anononce:req.body.Etat1Anononce,
                 Etat2Anononce:req.body.Etat2Anononce,
                 TypeAnnonce:req.body.TypeAnnonce, 
-                Image:req.body.Image,
-                Tags:req.body.Tags
+                Image:req.body.Image, 
+                Tags:req.body.Tags,
+                Produit:req.body.Produit,
+                Catégorie:req.body.Catégorie,
+                userId:req.body.userId  
             },
             function(err,list){
                 if (err){

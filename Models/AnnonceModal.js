@@ -50,6 +50,11 @@ const Image = new Schema({
 
 const annonceSchema =new mongoose.Schema({
 
+    userId:{
+        type:String,
+        required:true ,
+     
+    },
         
     Titre:{
         type:String,
