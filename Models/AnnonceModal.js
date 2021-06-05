@@ -7,10 +7,7 @@ const Schema =mongoose.Schema
 const Produit = new Schema({
 
 
-    userId :{
-        type: String, 
-        required:true
-    },
+   
 
     Nom: {
         
@@ -50,11 +47,10 @@ const Image = new Schema({
 
 const annonceSchema =new mongoose.Schema({
 
-    userId:{
-        type:String,
-        required:true ,
-     
-    },
+   userId:{
+       type:String , 
+       required:true
+   },
         
     Titre:{
         type:String,
