@@ -7,6 +7,10 @@ const Schema =mongoose.Schema
 const Produit = new Schema({
 
 
+    userId :{
+        type: String, 
+        required:true
+    },
 
     Nom: {
         
