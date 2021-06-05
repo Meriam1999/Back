@@ -49,7 +49,8 @@ const annonceSchema =new mongoose.Schema({
 
    userId:{
        type:String , 
-       required:true
+       required:true,
+       trim:true
    },
         
     Titre:{
