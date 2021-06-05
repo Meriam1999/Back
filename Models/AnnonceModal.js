@@ -12,7 +12,7 @@ const Produit = new Schema({
     Nom: {
         
         type:String,
-        required:true,
+
         trim:true
         ///////////slkfslmkdlmsq////*
     },
@@ -49,7 +49,7 @@ const annonceSchema =new mongoose.Schema({
 
    userId:{
        type:String , 
-       required:true,
+       required: false,
        trim:true
    },
         
