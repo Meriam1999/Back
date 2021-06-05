@@ -14,12 +14,12 @@ const FormulaireOrdonnance=require('./FormulaireOrdonnance')
     
     DateFabrication : {
         type :Date , 
-        required : true,
+        required: false,
         max : Date.now 
     }, 
     DateExpiration : {
         type:Date , 
-        required : true ,
+        required : false ,
         min : Date.now 
     },
 
