@@ -5,6 +5,17 @@ const {Schema, model} = require("mongoose")
 const FormulaireOrdonnance=require('./FormulaireOrdonnance')
  const medicSchema =prod.discriminator('Medicament',new mongoose.Schema ({
 
+    username : {
+        type :String, 
+        required: false,
+        trim :true
+    },
+    userId : {
+        type :String , 
+        required: false , 
+        trim :true
+    }, 
+
 
     Dosage : { 
         type : String,
