@@ -17,6 +17,6 @@ router.delete('/supprimer/:id',nomedicament.supprimerTypeNonmedicament);// ca ma
 router.delete('/supprimer',nomedicament.Supprimer); // ca marche
 
 //* MISE A JOUR MEDICAMENT */
-router.put('/modifier/:id',nomedicament.supprimerTypeNonmedicament); // ca marche 
+router.put('/modifier/:id',nomedicament.modifierTypeNonmedicament); // ca marche 
 
 module.exports= router;
