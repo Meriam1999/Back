@@ -112,7 +112,8 @@ const annonceSchema =new mongoose.Schema({
     Prix:{
         type:Number,
         required:false,
-        trim:true
+        trim:true,
+        default:'0'
     },
 
     Photo_annonce:{
