@@ -22,7 +22,9 @@ module.exports={
                 Image:req.body.Image, 
                 Tags:req.body.Tags,
                 Catégorie:req.body.Catégorie, 
-                TypeNonmedicament:req.body.TypeNonmedicament 
+                TypeNonmedicament:req.body.TypeNonmedicament,
+                userId:req.body.userId,
+                userName:req.body.userName
             }
         )
         Nm1.save(function(err){
@@ -110,7 +112,9 @@ module.exports={
                 Tags:req.body.Tags,
                 Produit:req.body.Produit,
                 Catégorie:req.body.Catégorie, 
-                TypeNonmedicament:req.body.TypeNonmedicament 
+                TypeNonmedicament:req.body.TypeNonmedicament,
+                userId:req.body.userId,
+                userName:req.body.userName
             },
             function(err,list){
                 if (err){

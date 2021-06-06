@@ -34,6 +34,8 @@ module.exports={
                 DateFabrication:req.body.DateFabrication,
                 DateExpiration:req.body.DateExpiration, 
                 FormulaireOrdonnance:req.body.FormulaireOrdonnance,
+                userId:req.body.userId,
+                userName:req.body.userName
              
             }
         )
@@ -118,7 +120,9 @@ module.exports={
                 Catégorie:req.body.Catégorie, 
                 Dosage:req.body.Dosage , 
                 DateFabrication:req.body.DateFabrication,
-                DateExpiration:req.body.DateExpiration 
+                DateExpiration:req.body.DateExpiration,
+                userId:req.body.userId,
+                userName:req.body.userName
             },
             function(err,list){
                 if (err){
