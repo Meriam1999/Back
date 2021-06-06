@@ -1,7 +1,12 @@
 const mongoose =require('mongoose');
 const reclamation = new mongoose.Schema({
 
-   
+    idAnnonce: {
+       type : String ,
+       required:false, 
+       trim:false
+   },
+
     Titre_reclamation: {
         type:String,
         required:true,

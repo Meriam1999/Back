@@ -11,7 +11,8 @@ module.exports={
             {  
                 Titre_reclamation:req.body.Titre_reclamation,
                 Contenu:req.body.Contenu,
-                Date:req.body.Date
+                Date:req.body.Date,
+                idAnnonce:req.body.idAnnonce
             }
         )
         reclamation1.save(function(err){
@@ -65,7 +66,8 @@ module.exports={
             {   
                 Titre_reclamation:req.body.Titre_reclamation,
                 Contenu:req.body.Contenu,
-                Date:req.body.Date
+                Date:req.body.Date,
+                idAnnonce:req.body.idAnnonce
             },
             function(err,list){
                 if (err){
