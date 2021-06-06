@@ -7,9 +7,9 @@ const NonMedicament= annonce.discriminator('NonMedicament',new mongoose.Schema (
         type: [{
         type: String,
         required:true , 
-        enum: ['Mobilier_Medicale', 'Soin_et_Pensement', 'Protection','Autre']
+        enum: ['mobilier medicale', 'Soin et Pansement', 'Protection','Autre']
         }],
-        default: ['Protection']
+
     }
 
 
