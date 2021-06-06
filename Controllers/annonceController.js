@@ -23,7 +23,8 @@ module.exports={
                 Tags:req.body.Tags,
                 Produit:req.body.Produit,
                 Catégorie:req.body.Catégorie,
-                userId:req.body.userId
+                userId:req.body.userId,
+                userName:req.body.userName
                 
                 
             }
@@ -98,7 +99,8 @@ module.exports={
                 Tags:req.body.Tags,
                 Produit:req.body.Produit,
                 Catégorie:req.body.Catégorie,
-                userId:req.body.userId
+                userId:req.body.userId,
+                userName:req.body.userName
                  
             },
             function(err,list){
