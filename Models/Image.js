@@ -2,11 +2,13 @@ const mongoose =require('mongoose');
 const image = new mongoose.Schema({
 
    
-    CodeBase64: {
-        type:String,
-        required:true,
-        trim:true
-    },
+    name: String , 
+    desc:String,
+    img : 
+    {
+        data : Buffer , 
+        contentType : String
+    }
   
 
     

@@ -33,16 +33,14 @@ const Tags = new Schema({
 })
 const Image = new Schema({
 
-    data: {
-        Buffer : String , 
-    },
-
-    ContentType: {
-        type:String,
-        required:true,
-        trim:true
-        ///////////slkfslmkdlmsq////*
-    },
+    name: String , 
+    desc:String,
+    img : 
+    {
+        data : Buffer , 
+        contentType : String
+    }
+  
    
 })
 
