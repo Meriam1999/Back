@@ -33,9 +33,11 @@ const Tags = new Schema({
 })
 const Image = new Schema({
 
+    data: {
+        Buffer : String , 
+    },
 
-
-    CodeBase64: {
+    ContentType: {
         type:String,
         required:true,
         trim:true
