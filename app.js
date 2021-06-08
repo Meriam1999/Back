@@ -87,6 +87,9 @@ app.use('/medicament',medicament);
 
 const produit = require('./Routers/produitRouter');
 app.use('/produit',produit);
+
+const fav = require('./Routers/favorisRouter');
+app.use('/favoris',fav);
 app.use(cookie());
 
 
