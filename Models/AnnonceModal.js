@@ -31,18 +31,7 @@ const Tags = new Schema({
     },
    
 })
-const Image = new Schema({
 
-    name: String , 
-    desc:String,
-    img : 
-    {
-        data : Buffer , 
-        contentType : String
-    }
-  
-   
-})
 
 
 const annonceSchema =new mongoose.Schema({
@@ -90,6 +79,11 @@ const annonceSchema =new mongoose.Schema({
         }],
 
     },
+
+    images: [{
+        url: String,
+        required: false 
+    }], 
    
 
 
@@ -136,15 +130,7 @@ const annonceSchema =new mongoose.Schema({
     }],
    
     
-    Image: [Image],
-
-    Image: [
-        {
-    
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Image",
-        
-    }],
+   
     Tags:[Tags],
 
     Tags: [

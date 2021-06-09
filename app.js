@@ -70,8 +70,6 @@ app.use('/notification',notificationRouter);
 const adresse = require('./Routers/adresseRouter');
 app.use('/adresse',adresse);
 
-const image = require('./Routers/ImageRouter');
-app.use('/image',image);
 
 const tags = require('./Routers/tagsRouter');
 app.use('/tags',tags);
