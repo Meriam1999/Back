@@ -24,7 +24,8 @@ module.exports={
                 Produit:req.body.Produit,
                 Catégorie:req.body.Catégorie,
                 userId:req.body.userId,
-                userName:req.body.userName
+                userName:req.body.userName,
+                images:req.body.images
                 
                 
             }
