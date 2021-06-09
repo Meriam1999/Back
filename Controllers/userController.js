@@ -213,6 +213,8 @@ module.exports = {
                           res.status(200).json({
                             token: token,
                             expiresIn: 3600,
+                            nom: fetchedUser.Nom,
+                            role: fetchedUser.etat,
                             userId: fetchedUser._id
                           });
                 
