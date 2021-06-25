@@ -81,7 +81,7 @@ const annonceSchema =new mongoose.Schema({
     },
 
     images: [{
-        url: String,
+        type : String,
         required: false 
     }], 
    

@@ -180,12 +180,13 @@ module.exports = {
         Auth:  async (req,res) => {
             try {
                 const user = await User.findOne({Email:req.body.Email});
-                
-                  const valid = user.test===req.body.Mot_de_passe
-                  let fetchedUser=user
+                    let fetchedUser=user
+                    
+                  const valid = req.body.Mot_de_passe
+                  
                if (!valid)
                 {
-                    console.log("heyyyy pasww")
+                    console.log(user.Mot_de_passe,req.body.Mot_de_passe)
                     return res.status(401).json({errorMessage:"mot de passe incorrecte" });
                 }
                 if (user && valid )
